@@ -1,0 +1,88 @@
+2.Richest Customer Wealth.
+class Solution {
+    public int maximumWealth(int[][] accounts) {
+        int sum = 0;
+
+        for(int i=0; i<accounts.length; i++){
+            int temp_wealth = 0;
+            for(int j=0; j<accounts[i].length; j++){
+                temp_wealth +=accounts[i][j];
+            }
+            sum = Math.max(sum, temp_wealth);
+        }
+        return sum;
+    }
+}
+
+
+
+3.Toeplitz Matrix.
+class Solution {
+    public boolean isToeplitzMatrix(int[][] matrix) {
+      for(int i=1; i<matrix.length; i++){
+            for(int j=1; j<matrix[0].length; j++){
+                if(matrix[i][j] != matrix[i-1][j-1])
+                    return false;
+            }
+        }
+        
+        return true;  
+    }
+}
+
+
+
+4.Matrix Diagonal Sum.
+class Solution {
+    public int diagonalSum(int[][] mat) {
+     int n = mat.length;
+        int sum = 0;
+        
+        for (int i = 0; i < n; i++) {
+            sum += mat[i][i]; // Add elements from the primary diagonal
+            
+            // Check if the current element is not part of the primary diagonal
+            if (i != n - 1 - i) {
+                sum += mat[i][n - 1 - i]; // Add elements from the secondary diagonal
+            }
+        }
+        
+        return sum;   
+    }
+}
+
+
+5.Count Negative Numbers in a Sorted Matrix.
+class Solution {
+    public int countNegatives(int[][] grid) {
+      int ans=0,row=0,col=grid[0].length-1;
+      while(col>=0 && row<grid.length)
+      {
+          if(grid[row][col]<0)
+          {
+              ans+= grid.length -row;
+              col--;
+          }
+          else
+          {
+              row++;
+          }
+      }
+      return ans;  
+    }
+}
+
+
+6.Transpose Matrix.
+class Solution {
+    public int[][] transpose(int[][] matrix) {
+     int[][] answer = new int[matrix[0].length][matrix.length];
+        for(int i=0; i < matrix.length; i++){
+            for (int j = 0; j < matrix[0].length; j++){
+                answer[j][i] = matrix[i][j];
+            } 
+        }
+        return answer;   
+    }
+}
+
